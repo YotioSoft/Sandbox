@@ -27,7 +27,7 @@ function previewFile(file) {
         image_data.onload = () => {
             previewArea.width = image_data.width;
             previewArea.height = image_data.height;
-            ctx.drawImage(image_data, 0, 0);
+            ctx.putImageData(image_data, 0, 0);
         }
     }
 
