@@ -29,9 +29,11 @@ function previewFile(file) {
             ctx.drawImage(image, 0, 0);
             
             // 読み込んだ画像からImageDataを取得
-            console.log(ctx.width);
-            console.log(parseInt(ctx.width));
-            image_data = ctx.getImageData(0, 0, parseInt(ctx.width), parseInt(ctx.height));
+            ctx.onload = () => {
+                console.log(ctx.width);
+                console.log(parseInt(ctx.width));
+                image_data = ctx.getImageData(0, 0, parseInt(ctx.width), parseInt(ctx.height));
+            }
         }
     }
 
