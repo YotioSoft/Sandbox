@@ -1,6 +1,7 @@
 function previewFile(file) {
     // 追加先
     const previewArea = document.getElementById('preview');
+    console.log("previewFile");
 
     // FileRenderオブジェクトを作成
     const render = new FileRender();
