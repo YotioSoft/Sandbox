@@ -42,12 +42,13 @@ function previewFile(file) {
         var y = e.offsetY;	// 垂直の位置座標
     
         console.log(x+","+y);
+        console.log(image_data.width+","+image_data.height);
 
         // クリックされた座標のRGB値を取得
         var index = (x + y * image.width) * 4;
-        r = image_data.data[index];
-        g = image_data.data[index + 1];
-        b = image_data.data[index + 2];
+        var r = image_data.data[index];
+        var g = image_data.data[index + 1];
+        var b = image_data.data[index + 2];
 
         console.log(r+","+g+","+b);
     }
