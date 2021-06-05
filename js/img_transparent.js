@@ -1,7 +1,9 @@
 function previewFile(file) {
     // 追加先
     const previewArea = document.getElementById('preview');
-    console.log("previewFile");
+
+    // キャンバスの準備
+    const ctx = previewArea.getContext("2d");
 
     // FileRenderオブジェクトを作成
     const reader = new FileReader();
@@ -11,11 +13,19 @@ function previewFile(file) {
         const imageUrl = e.target.result;
         const img = document.createElement("img");
         img.src = imageUrl;
-        previewArea.appendChild(img);
     }
 
     // ファイル読み込み
     reader.readAsDataURL(file);
+
+    // Imageに変換
+    const image = new Image();
+    reader.onloadend = function() {
+        image.src = reader.result;
+        image.onload = () => {
+            ctx.drawImage(image, 0, 0);
+        }
+    }
 
     // previewAreaがクリックされた時の処理
     previewArea.onclick = function(e) {
@@ -23,5 +33,8 @@ function previewFile(file) {
         var y = e.offsetY;	// 垂直の位置座標
     
         console.log(x+","+y);
+
+        // クリックされた座標のRGB値を取得
+        var index = (x + y * image.width) * 4;
     }
 }
