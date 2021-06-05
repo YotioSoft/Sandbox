@@ -17,12 +17,12 @@ function previewFile(file) {
 
     // ファイル読み込み
     reader.readAsDataURL(file);
-
-    // Imageに変換
-    const image = new Image();
+    
     var image_data = ctx.createImageData(256, 256);
-
     reader.onloadend = function() {
+        // Imageに変換
+        image_data = ctx.getImageData(0, 0, 256, 256);
+        
         image_data.src = reader.result;
         image_data.onload = () => {
             previewArea.width = image_data.width;
