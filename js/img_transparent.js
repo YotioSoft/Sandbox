@@ -4,10 +4,10 @@ function previewFile(file) {
     console.log("previewFile");
 
     // FileRenderオブジェクトを作成
-    const render = new FileRender();
+    const reader = new FileReader();
 
     // URLとして読み込まれたとき実行
-    render.onload = function(e) {
+    reader.onload = function(e) {
         const imageUrl = e.target.result;
         const img = document.createElement("img");
         img.src = imageUrl;
@@ -15,12 +15,12 @@ function previewFile(file) {
     }
 
     // ファイル読み込み
-    render.readAsDataURL(file);
+    reader.readAsDataURL(file);
 }
 
-document.getElementById('preview').onclick = function(event) {
-	var x = event.pageX ;	// 水平の位置座標
-	var y = event.pageY ;	// 垂直の位置座標
+document.getElementById('preview').onclick = function(e) {
+	var x = e.pageX ;	// 水平の位置座標
+	var y = e.pageY ;	// 垂直の位置座標
 
     document.write(x+","+y);
 }
