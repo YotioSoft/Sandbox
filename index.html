@@ -1,22 +1,26 @@
 <html>
 <head>
 	<title>YotioSoft Sandbox</title>
+
+	<script src="./js/img_transparent.js"></script>
 <body>
-	ƒtƒ@ƒCƒ‹ƒAƒbƒvƒ[ƒ_[ƒeƒXƒg<br>
-	<input type="file" id="example" multiple>
+	ç”»åƒã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãƒ†ã‚¹ãƒˆ<br>
+	<input type="file" id="imgfile" accept=".png, .jpg, .jpeg">
 
 	<script>
-		// input—v‘f
-		const fileInput = document.getElementById('example');
-		// changeƒCƒxƒ“ƒg‚ÅŒÄ‚Ño‚·ŠÖ”
+		// inputè¦ç´ 
+		const fileInput = document.getElementById('imgfile');
+		// changeã‚¤ãƒ™ãƒ³ãƒˆã§å‘¼ã³å‡ºã™é–¢æ•°
 		const handleFileSelect = () => {
-		  const files = fileInput.files;
-		  for (let i = 0; i < files.length; i++) {
-		    console.log(files[i]);@// 1‚Â1‚Â‚Ìƒtƒ@ƒCƒ‹ƒf[ƒ^‚Ífiles[i]‚Åæ“¾‚Å‚«‚é
-		  }
+			const files = fileInput.files;
+			for (let i = 0; i < files.length; i++) {
+				console.log(files[i]);ã€€// 1ã¤1ã¤ã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‡ãƒ¼ã‚¿ã¯files[i]ã§å–å¾—ã§ãã‚‹
+			}
 		}
-		// ƒtƒ@ƒCƒ‹‘I‘ğ‚ÉhandleFileSelect‚ğ”­‰Î
+		// ãƒ•ã‚¡ã‚¤ãƒ«é¸æŠæ™‚ã«handleFileSelectã‚’ç™ºç«
 		fileInput.addEventListener('change', handleFileSelect);
 	</script>
+
+	<div id="preview"></div>
 </body>
 </html>
