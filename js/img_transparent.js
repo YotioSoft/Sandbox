@@ -20,7 +20,7 @@ function previewFile(file) {
 
     // Imageに変換
     const image = new Image();
-    var image_data = ctx.createImageData();
+    var image_data = ctx.createImageData(256, 256);
     reader.onloadend = function() {
         image.src = reader.result;
         image.onload = () => {
