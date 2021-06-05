@@ -17,17 +17,19 @@ function previewFile(file) {
 
     // ファイル読み込み
     reader.readAsDataURL(file);
-    
-    var image_data = ctx.createImageData(256, 256);
+
+    // Imageに変換
+    const image = new Image();
+    var image_data = ctx.createImageData();
     reader.onloadend = function() {
-        // Imageに変換
-        image_data = ctx.getImageData(0, 0, 256, 256);
-        
-        image_data.src = reader.result;
-        image_data.onload = () => {
-            previewArea.width = image_data.width;
-            previewArea.height = image_data.height;
-            ctx.putImageData(image_data, 0, 0);
+        image.src = reader.result;
+        image.onload = () => {
+            previewArea.width = image.width;
+            previewArea.height = image.height;
+            ctx.drawImage(image, 0, 0);
+            
+            // 読み込んだ画像からImageDataを取得
+            image_data = ctx.getImageData(0, 0, ctx.width, ctx.height);
         }
     }
 
@@ -39,11 +41,11 @@ function previewFile(file) {
         console.log(x+","+y);
 
         // クリックされた座標のRGB値を取得
-        var index = (x + y * image_data.width) * 4;
+        var index = (x + y * image.width) * 4;
         r = image_data.data[index];
         g = image_data.data[index + 1];
         b = image_data.data[index + 2];
 
-        console.log(r+","+g+","+b)
+        console.log(r+","+g+","+b);
     }
 }
