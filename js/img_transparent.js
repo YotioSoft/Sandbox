@@ -16,11 +16,12 @@ function previewFile(file) {
 
     // ファイル読み込み
     reader.readAsDataURL(file);
-}
 
-document.getElementById('preview').onclick = function(e) {
-	var x = e.pageX ;	// 水平の位置座標
-	var y = e.pageY ;	// 垂直の位置座標
-
-    document.write(x+","+y);
+    // previewAreaがクリックされた時の処理
+    previewArea.onclick = function(e) {
+        var x = e.pageX ;	// 水平の位置座標
+        var y = e.pageY ;	// 垂直の位置座標
+    
+        console.log(x+","+y);
+    }
 }
