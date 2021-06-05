@@ -19,8 +19,8 @@ function previewFile(file) {
 
     // previewAreaがクリックされた時の処理
     previewArea.onclick = function(e) {
-        var x = e.pageX ;	// 水平の位置座標
-        var y = e.pageY ;	// 垂直の位置座標
+        var x = e.offsetX;	// 水平の位置座標
+        var y = e.offsetY;	// 垂直の位置座標
     
         console.log(x+","+y);
     }
