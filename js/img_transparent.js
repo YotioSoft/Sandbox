@@ -3,7 +3,7 @@ function previewFile(file) {
     const previewArea = document.getElementById('preview');
 
     // キャンバスの準備
-    const ctx = previewArea.getContext("2d");
+    var ctx = previewArea.getContext("2d");
 
     // FileRenderオブジェクトを作成
     const reader = new FileReader();
@@ -20,10 +20,14 @@ function previewFile(file) {
 
     // Imageに変換
     const image = new Image();
+    var image_data = ctx.createImageData();
+
     reader.onloadend = function() {
-        image.src = reader.result;
-        image.onload = () => {
-            ctx.drawImage(image, 0, 0);
+        image_data.src = reader.result;
+        image_data.onload = () => {
+            previewArea.width = image_data.width;
+            previewArea.height = image_data.height;
+            ctx.drawImage(image_data, 0, 0);
         }
     }
 
@@ -35,6 +39,11 @@ function previewFile(file) {
         console.log(x+","+y);
 
         // クリックされた座標のRGB値を取得
-        var index = (x + y * image.width) * 4;
+        var index = (x + y * image_data.width) * 4;
+        r = image_data.data[index];
+        g = image_data.data[index + 1];
+        b = image_data.data[index + 2];
+
+        console.log(r+","+g+","+b)
     }
 }
