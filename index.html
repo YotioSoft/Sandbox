@@ -16,13 +16,12 @@
 		const handleFileSelect = () => {
 			const files = fileInput.files;
 			for (let i = 0; i < files.length; i++) {
-				console.log(files[i]);　// 1つ1つのファイルデータはfiles[i]で取得できる
+				console.log(files[i]+"\n");　// 1つ1つのファイルデータはfiles[i]で取得できる
+				previewFile(files[0]);
 			}
 		}
 		// ファイル選択時にhandleFileSelectを発火
 		fileInput.addEventListener('change', handleFileSelect);
-
-		previewFile(files[0]);
 	</script>
 </body>
 </html>
